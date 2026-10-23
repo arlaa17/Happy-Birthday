@@ -1,0 +1,1217 @@
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ♡</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --pink: #ff00a8;
+        --dark: #28001d;
+        --purple: #72004e;
+        --white: #fff7fb;
+        --cream: #fff8e9;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: var(--dark);
+        color: white;
+        font-family: "Cormorant Garamond", Georgia, serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .app {
+        min-height: 100vh;
+        min-height: 100svh;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 85% 20%, #ff00a8 0%, transparent 40%),
+          radial-gradient(circle at 10% 90%, #59003d 0%, transparent 45%),
+          linear-gradient(110deg, #250019, #800054 55%, #ff00a8);
+      }
+
+      .page {
+        position: absolute;
+        inset: 0;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 28px 18px;
+        display: grid;
+        place-items: center;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+
+      .page.active {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        z-index: 5;
+      }
+
+      .content {
+        width: min(1100px, 100%);
+        margin: auto;
+        text-align: center;
+      }
+
+      .script {
+        font-family: "Great Vibes", cursive;
+        font-weight: 400;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(50px, 8vw, 100px);
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: clamp(42px, 7vw, 80px);
+        margin-bottom: 28px;
+      }
+
+      .subtitle {
+        color: #ffd6ef;
+        font-size: clamp(17px, 2.5vw, 25px);
+        font-style: italic;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: #f5b9dd;
+        font-size: 13px;
+      }
+
+      .continue {
+        color: white;
+        background: none;
+        border: 0;
+        text-decoration: underline;
+        text-underline-offset: 7px;
+        cursor: pointer;
+        font-size: clamp(18px, 2.5vw, 25px);
+        padding: 12px;
+      }
+
+      .back {
+        position: fixed;
+        right: 20px;
+        top: 18px;
+        z-index: 20;
+        border: 0;
+        border-radius: 30px;
+        background: #12c75e;
+        color: #062914;
+        padding: 7px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.15em;
+        cursor: pointer;
+      }
+
+      /* OPENING */
+
+      .envelope-area {
+        width: min(470px, 92vw);
+        aspect-ratio: 1.65;
+        margin: 20px auto;
+        perspective: 1000px;
+      }
+
+      .envelope {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        transition: transform 0.25s;
+      }
+
+      .envelope:hover {
+        transform: translateY(-4px);
+      }
+
+      .envelope-back {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, #fffdf5, #e9d5b5);
+        box-shadow: 0 18px 45px #0005;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .envelope-back::before,
+      .envelope-back::after {
+        content: "";
+        position: absolute;
+        width: 80%;
+        height: 1px;
+        background: #d4bea0;
+        top: 52%;
+      }
+
+      .envelope-back::before {
+        left: -10%;
+        transform: rotate(35deg);
+      }
+
+      .envelope-back::after {
+        right: -10%;
+        transform: rotate(-35deg);
+      }
+
+      .flap {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, #fffaf0, #ead5b5);
+        clip-path: polygon(0 0, 100% 0, 50% 63%);
+        transform-origin: top center;
+        transition: transform 1s ease;
+        z-index: 4;
+      }
+
+      .letter {
+        position: absolute;
+        left: 7%;
+        bottom: 5%;
+        width: 86%;
+        height: 88%;
+        background: var(--cream);
+        color: #72004e;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(10%);
+        transition:
+          transform 1s ease,
+          opacity 0.4s;
+        z-index: 1;
+      }
+
+      .letter h3 {
+        font-size: clamp(30px, 6vw, 55px);
+        margin: 0 0 10px;
+      }
+
+      .letter p {
+        font-size: 18px;
+      }
+
+      .envelope.open .flap {
+        transform: rotateX(180deg);
+      }
+
+      .envelope.open .letter {
+        opacity: 1;
+        transform: translateY(-35%);
+        z-index: 5;
+      }
+
+      .flower {
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        width: 75px;
+        height: 75px;
+        transform: translate(-50%, -50%);
+        z-index: 7;
+        transition: opacity 0.4s;
+      }
+
+      .flower span {
+        position: absolute;
+        left: 27px;
+        top: 14px;
+        width: 23px;
+        height: 42px;
+        border-radius: 60%;
+        background: linear-gradient(145deg, #ff75c8, #a00070);
+        transform-origin: 50% 78%;
+      }
+
+      .flower span:nth-child(1) {
+        transform: rotate(0);
+      }
+      .flower span:nth-child(2) {
+        transform: rotate(60deg);
+      }
+      .flower span:nth-child(3) {
+        transform: rotate(120deg);
+      }
+      .flower span:nth-child(4) {
+        transform: rotate(180deg);
+      }
+      .flower span:nth-child(5) {
+        transform: rotate(240deg);
+      }
+      .flower span:nth-child(6) {
+        transform: rotate(300deg);
+      }
+
+      .flower::after {
+        content: "✦";
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: #ffe7a8;
+      }
+
+      .envelope.open .flower {
+        opacity: 0;
+      }
+
+      /* BIRTHDAY CARD */
+
+      .birthday-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr 1fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .photos {
+        display: grid;
+        gap: 14px;
+      }
+
+      .photo {
+        background: white;
+        padding: 8px 8px 28px;
+        box-shadow: 0 10px 25px #0005;
+        transform: rotate(-5deg);
+      }
+
+      .photo:nth-child(even) {
+        transform: rotate(6deg);
+      }
+
+      .photo img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        background: #ddd;
+      }
+
+      .card {
+        background: #fff7e7;
+        padding: 45px 25px 30px;
+        box-shadow: 0 18px 45px #0005;
+      }
+
+      .card-inner {
+        min-height: 220px;
+        background: white;
+        color: #72004e;
+        display: grid;
+        place-items: center;
+        padding: 25px 10px;
+      }
+
+      .card-inner h2 {
+        margin: 0;
+        font-size: clamp(42px, 6vw, 75px);
+      }
+
+      .date {
+        font-size: 16px;
+        letter-spacing: 0.1em;
+        margin: 8px 0 0;
+      }
+
+      .seal {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: -12px auto 0;
+        background: radial-gradient(circle at 30% 25%, #ff7cd2, #99006a 65%);
+      }
+
+      /* CHOOSE SURPRISE */
+
+      .choices {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+      }
+
+      .choice {
+        border: 0;
+        background: none;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.25s;
+      }
+
+      .choice:hover {
+        transform: translateY(-7px);
+      }
+
+      .choice-icon {
+        font-size: clamp(60px, 9vw, 110px);
+        margin-bottom: 8px;
+      }
+
+      .choice span {
+        font-size: clamp(28px, 4vw, 46px);
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+
+      /* JOURNEY */
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 950px;
+        margin: auto;
+      }
+
+      .polaroid {
+        background: white;
+        padding: 8px 8px 28px;
+        box-shadow: 0 10px 25px #0005;
+        transform: rotate(-4deg);
+      }
+
+      .polaroid:nth-child(even) {
+        transform: rotate(5deg);
+      }
+
+      .polaroid img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        background: #ddd;
+      }
+
+      /* PLAYLIST */
+
+      .playlist-layout {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
+        max-width: 950px;
+        margin: auto;
+        min-width: 0;
+      }
+
+      .note {
+        flex: 1 1 0;
+        min-width: 0;
+        background: white;
+        color: #4b1235;
+        padding: 28px;
+        box-shadow: 0 18px 45px #0005;
+        text-align: left;
+        transform: rotate(-2deg);
+        overflow-wrap: break-word;
+      }
+
+      .note h2 {
+        color: #72004e;
+        font-size: clamp(40px, 6vw, 65px);
+        margin-bottom: 0 0 15px;
+      }
+
+      .note p {
+        font-size: clamp(17px, 2vw, 22px);
+        line-height: 1.5;
+      }
+
+      .frame {
+        width: 260px;
+        max-width: 100%;
+        flex: 0 1 260px;
+        min-width: 0;
+        background: #f8dfa8;
+        border: 10px ridge #c4974d;
+        padding: 8px;
+        transform: rotate(3deg);
+        box-sizing: border-box;
+      }
+
+      .frame img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        background: #ddd;
+      }
+
+      .player {
+        width: 100%;
+        max-width: 260px;
+        min-width: 0;
+        margin-top: 18px;
+      }
+
+      .player iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 152px;
+        border: 0;
+        border-radius: 12px;
+        display: block;
+      }
+
+      /* MOMENT */
+
+      .moment-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 35px;
+        align-items: center;
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        min-width: 0;
+      }
+
+      .video {
+        width: 100%;
+        min-width: 0;
+        background: #111;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+
+      .video iframe {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        border: 0;
+      }
+
+      .mini-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+        width: 100%;
+        min-width: 0;
+      }
+
+      
+     .mini-gallery .frame video {
+       display: block;
+        width: 100%;
+       height: auto;
+       aspect-ratio: 4 / 5;
+       object-fit: cover;
+       background: #111;
+       border-radius: 2px;
+      }
+
+
+      .mini-gallery .frame:nth-child(3) {
+        grid-column: 1 / -1;
+        width: 55%;
+        max-width: 220px;
+        justify-self: center;
+      }
+
+      /* GIFT */
+
+      .gift {
+        width: min(280px, 70vw);
+        aspect-ratio: 1;
+        position: relative;
+        margin: 15px auto;
+        cursor: pointer;
+      }
+
+      .box-body {
+        position: absolute;
+        inset: 30% 8% 5%;
+        background: linear-gradient(135deg, #ff4058, #c10d32);
+        border-radius: 8px;
+        box-shadow: 0 18px 40px #0005;
+      }
+
+      .box-body::before,
+      .box-lid::before {
+        content: "";
+        position: absolute;
+        left: 43%;
+        width: 14%;
+        top: 0;
+        bottom: 0;
+        background: #f7c52d;
+      }
+
+      .box-lid {
+        position: absolute;
+        left: 2%;
+        right: 2%;
+        top: 20%;
+        height: 22%;
+        background: linear-gradient(135deg, #ff4058, #c10d32);
+        border-radius: 8px;
+        z-index: 3;
+        transform-origin: bottom center;
+        transition: transform 0.8s;
+      }
+
+      .box-bow {
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 75px;
+        z-index: 4;
+        transition: transform 0.8s;
+      }
+
+      .gift.open .box-lid {
+        transform: rotate(-18deg) translateY(-70px);
+      }
+
+      .gift.open .box-bow {
+        transform: translateX(-50%) translateY(-65px);
+      }
+
+      .ticket {
+        display: none;
+        grid-template-columns: 1fr 160px;
+        max-width: 750px;
+        margin: 0 auto;
+        background: var(--cream);
+        color: #5b1640;
+        border-radius: 18px;
+        overflow: hidden;
+        text-align: left;
+        box-shadow: 0 18px 45px #0005;
+        animation: ticketIn 0.7s ease;
+      }
+
+      .ticket.show {
+        display: grid;
+      }
+
+      .ticket-main {
+        padding: 28px;
+      }
+
+      .ticket-main h2 {
+        font-size: clamp(40px, 6vw, 62px);
+        margin-bottom: 10px;
+      }
+
+      .ticket-main p {
+        font-size: 18px;
+        margin: 7px 0;
+      }
+
+      .ticket-stub {
+        background: #ffe1f0;
+        border-left: 2px dashed #c49bb5;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 18px;
+      }
+
+      .ticket-code {
+        font-family: monospace;
+        letter-spacing: 0.15em;
+        writing-mode: vertical-rl;
+        margin-top: 20px;
+      }
+
+      @keyframes ticketIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+
+      /* FALLING PETALS */
+      .petal-fall {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .falling-petal {
+        position: absolute;
+        top: -30px;
+        width: 12px;
+        height: 18px;
+        border-radius: 100% 0 100% 0;
+        background: #f48cc9;
+        opacity: 0.7;
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translate3d(80px, 110vh, 0) rotate(360deg);
+        }
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 760px) {
+        .page {
+          padding: 22px 14px;
+        }
+
+        .birthday-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .birthday-grid .card {
+          order: -1;
+        }
+
+        .photos {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .choices { 
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+
+        .gallery {
+          grid-template-columns: 1fr 1fr;
+          gap: 15px;
+        }
+
+        .playlist-layout {
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+          width: 100%;
+          max-width: 100%;
+          padding: 0 8px;
+        }
+
+        .moment-layout {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 24px;
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+
+        .video {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          padding: 5px;
+        }
+
+        .video iframe {
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          aspect-ratio: 16 / 9;
+          height: auto;
+        }
+
+        .mini-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+          width: 100%;
+          min-width: 0;
+        }
+
+        .mini-gallery .frame {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          flex: initial;
+          margin: 0;
+        }
+
+        .mini-gallery .frame:nth-child(3) {
+          grid-column: 1 / -1;
+          width: 65%;
+          max-width: 220px;
+          justify-self: center;
+        }
+
+        .mini-gallery .frame video {
+          display: block;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 4 / 5;
+          object-fit: cover;
+          background: #111;
+          border-radius: 2px;
+        }
+
+        .note {
+          width: 100%;
+          max-width: 420px;
+          flex: none;
+          box-sizing: border-box;
+          transform: rotate(-1deg);
+        }
+
+        .note h2 {
+         font-size: clamp(36px, 10vw, 48px);
+        }
+
+        .note p {
+         font-size: 17px;
+         line-height: 1.5;
+        }
+
+        .player {
+         width: 100%;
+         max-width: 260px;
+        }
+
+        .frame {
+          width: 250px;
+          max-width: 90%;
+          flex: none;
+          margin: auto;
+        }
+
+        .ticket {
+          grid-template-columns: 1fr;
+        }
+
+        .ticket-stub {
+          border-left: 0;
+          border-top: 2px dashed #c49bb5;
+        }
+
+        .ticket-code {
+          writing-mode: horizontal-tb;
+        }
+
+        .envelope.open .letter {
+          transform: translateY(-25%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="petal-fall" aria-hidden="true">
+        <span class="falling-petal" style="left:8%;animation-duration:13s;animation-delay:-4s"></span>
+        <span class="falling-petal" style="left:25%;animation-duration:17s;animation-delay:-11s"></span>
+        <span class="falling-petal" style="left:56%;animation-duration:15s;animation-delay:-2s"></span>
+        <span class="falling-petal" style="left:84%;animation-duration:18s;animation-delay:-8s"></span>
+        <span class="falling-petal" style="left:95%;animation-duration:12s;animation-delay:-6s"></span>
+      </div>
+
+      <div class="petal-fall" aria-hidden="true">
+        <span class="falling-petal" style="left: 8%; animation-duration: 13s; animation-delay: -4s"></span>
+        <span class="falling-petal" style="left: 25%; animation-duration: 17s; animation-delay: -11s"></span>
+        <span class="falling-petal" style="left: 56%; animation-duration: 15s; animation-delay: -2s"></span>
+        <span class="falling-petal" style="left: 84%; animation-duration: 18s; animation-delay: -8s"></span>
+        <span class="falling-petal" style="left: 95%; animation-duration: 12s; animation-delay: -6s"></span>
+      </div>
+
+      <!-- 1. OPENING -->
+      <section class="page active" id="opening">
+        <div class="content">
+          <p class="eyebrow">A Special Invitation</p>
+          <h1 class="script">Press the Envelope</h1>
+
+          <div class="envelope-area">
+            <button class="envelope" id="envelope" aria-label="Buka amplop">
+              <div class="envelope-back"></div>
+
+              <div class="letter">
+                <h3 class="script">For You ♡</h3>
+                <p>sending warm wishes on your special day sayangkuuuu♡ enjoy your day sayangggg nanti kita ketemu yaaaa hehehe love you sayangggg</p>
+              </div>
+
+              <div class="flap"></div>
+
+              <div class="flower" aria-hidden="true">
+                <span></span><span></span><span></span> <span></span><span></span><span></span>
+              </div>
+            </button>
+          </div>
+
+          <p class="subtitle" id="openHint">tap to open</p>
+
+          <button class="continue" id="openingContinue" hidden="">
+            Tap to continue ♡
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. BIRTHDAY CARD -->
+      <section class="page" id="birthday">
+        <div class="content">
+          <p class="eyebrow">For My Favorite Person</p>
+
+          <div class="birthday-grid">
+            <div class="photos">
+              <div class="photo">
+                <img src="img/left 1.jpeg">
+              </div>
+              <div class="photo">
+                <img src="img/left 2.jpeg">
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-inner">
+                <div>
+                  <h2 class="script">Happy Birthday Sayangkuuuu</h2>
+                  <p class="date">29.10.2006</p>
+                </div>
+              </div>
+              <div class="seal"></div>
+            </div>
+
+            <div class="photos">
+              <div class="photo">
+                <img src="img/right 1.jpeg">
+              </div>
+              <div class="photo">
+                <img src="img/right 2.jpeg">
+              </div>
+              <div class="photo">
+                <img src="img/right 3.jpeg">
+              </div>
+            </div>
+          </div>
+
+          <button class="continue" data-go="menu">Tap for surprise ♡</button>
+          <button class="back" data-go="back">BACK</button>
+        </div>
+      </section>
+
+      <!-- 3. CHOOSE THE SURPRISE -->
+      <section class="page" id="menu">
+
+        <div class="content">
+          <h2 class="script">Choose the Surprise</h2>
+
+          <div class="choices">
+            <button class="choice" data-go="journey">
+              <div class="choice-icon">📷</div>
+              <span class="script">Journey</span>
+            </button>
+
+            <button class="choice" data-go="playlist">
+              <div class="choice-icon">⏱️</div>
+              <span class="script">Playlist</span>
+            </button>
+
+            <button class="choice" data-go="moment">
+              <div class="choice-icon">💿</div>
+              <span class="script">Moment</span>
+            </button>
+
+            <button class="choice" data-go="gift">
+              <div class="choice-icon">🎁</div>
+              <span class="script">Gift</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="back" data-go="back">
+         BACK
+       </button>
+      </section>
+
+      <!-- 4. JOURNEY -->
+      <section class="page" id="journey">
+        <button class="back" data-go="menu">BACK</button>
+
+        <div class="content">
+          <h2 class="script">Our Journey</h2>
+
+          <div class="gallery">
+            <div class="polaroid">
+              <img src="img/ken 1.jpeg" alt="Kenangan 1">
+            </div>
+            <div class="polaroid">
+              <img src="img/ken 2.jpg" alt="Kenangan 2">
+            </div>
+            <div class="polaroid">
+              <img src="img/ken 3.jpg" alt="Kenangan 3">
+            </div>
+            <div class="polaroid">
+              <img src="img/ken 4.jpg" alt="Kenangan 4">
+            </div>
+            <div class="polaroid">
+              <img src="img/ken 5.jpg" alt="Kenangan 5">
+            </div>
+            <div class="polaroid">
+              <img src="img/ken 6.jpg" alt="Kenangan 6">
+            </div>
+            <div class="polaroid">
+              <img src="img/ken 7.jpg" alt="Kenangan 7">
+            </div>
+            <div class="polaroid">
+              <img src="img/ken 8.jpg" alt="Kenangan 8">
+            </div>
+          </div>
+
+          <p class="subtitle">Every picture, one little piece of us ♡</p>
+        </div>
+      </section>
+
+      <!-- 5. PLAYLIST -->
+      <section class="page" id="playlist">
+        <button class="back" data-go="menu">BACK</button>
+
+        <div class="content">
+          <div class="playlist-layout">
+            <div class="note">
+              <h2 class="script">For You</h2>
+
+              <p>
+                Selamat ulang tahun, sayang. Di hari spesialmu ini, aku cuma mau
+                bilang terima kasih karena sudah hadir dan membawa begitu banyak
+                kebahagiaan ke hidupku.
+              </p>
+          
+
+             <div class="player">           
+                <iframe data-testid="embed-iframe" 
+                 style="border-radius:12px" 
+                 src="https://open.spotify.com/embed/track/13CwOTXUgBugeBByE9oIWb?utm_source=generator&si=2e4cfafc2fb2482f"
+                 width="100%" 
+                 height="152" 
+                 frameBorder="0" 
+                 allowfullscreen="" 
+                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                 loading="lazy">
+                </iframe>
+             </div>
+            </div>
+
+            <div class="frame">
+               <img src="img/playlist.jpeg">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. MOMENT -->
+      <section class="page" id="moment">
+        <button class="back" data-go="menu">BACK</button>
+
+        <div class="content">
+          <h2 class="script">A Little Moment</h2>
+
+          <div class="moment-layout">
+            <div class="video">
+              <iframe width="560" 
+               height="315" 
+               src="https://www.youtube.com/embed/OxADOM4KO88?si=aybiF_P5nZ7aBIUr"
+               title="YouTube video player" 
+               frameborder="0" 
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+               referrerpolicy="strict-origin-when-cross-origin" 
+               allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="mini-gallery">
+              <div class="frame">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="vid/vid (1).mp4" type="video/mp4 ">
+                </video>
+              </div>
+              <div class="frame">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="vid/vid (2).mp4" type="video/mp4 ">
+                </video>
+              </div>
+              <div class="frame">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="vid/vid (3).mp4" type="video/mp4 ">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <p class="subtitle">Some songs feel like memories.</p>
+        </div>
+      </section>
+
+      <!-- 7. GIFT -->
+      <section class="page" id="gift">
+        <button class="back" data-go="menu">BACK</button>
+
+        <div class="content">
+          <p class="eyebrow">One More Surprise</p>
+          <h2 class="script">A Little Gift For Us</h2>
+
+          <div class="gift" id="giftBox" role="button" tabindex="0" aria-label="Buka hadiah">
+            <div class="box-bow">🎀</div>
+            <div class="box-lid"></div>
+            <div class="box-body"></div>
+          </div>
+
+          <p class="subtitle" id="giftHint">tap the gift ♡</p>
+
+          <div class="ticket" id="movieTicket">
+            <div class="ticket-main">
+              <p class="eyebrow" style="color: #9a3b71">OUR MOVIE DATE</p>
+
+              <h2 class="script">Cinema Ticket ♡</h2>
+
+              <!-- Ubah detail tiket di sini -->
+              <p><strong>Movie:</strong> Laut Bercerita</p>
+              <p><strong>Date:</strong> 29 Oktober 2026</p>
+              <p><strong>Time:</strong> 16:00</p>
+              <p><strong>Seats:</strong> G1 &amp; G2</p>
+
+              <p style="margin-top: 18px; font-style: italic">
+                A movie date for us. Let's make another beautiful memory
+                together.
+              </p>
+
+              <!--
+          Kalau ingin menggunakan foto tiket asli,
+          aktifkan tag img berikut dan ubah nama file-nya.
+          
+          <img
+            src="assets/movie-ticket.jpg"
+            alt="Tiket bioskop kami"
+            style="width:100%;margin-top:16px;border-radius:12px;"
+          >
+          -->
+            </div>
+
+            <div class="ticket-stub">
+              <div>
+                <div style="font-size: 54px">🎬</div>
+                <strong>ADMIT TWO</strong>
+                <div class="ticket-code">LOVE-291026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+       const pages = document.querySelectorAll(".page");
+       let currentPage = document.querySelector(".page.active")?.id || "opening";
+       let previousPage = null;
+ 
+       function showPage(id) {
+        if (id === "back") {
+          if (previousPage) {
+           const pageToShow = previousPage;
+           previousPage = currentPage;
+           currentPage = pageToShow;
+         }
+       } else {
+         previousPage = currentPage;
+         currentPage = id;
+       }
+
+       pages.forEach((page) => {
+        page.classList.toggle("active", page.id === currentPage);
+       });
+     }
+ 
+     document.querySelectorAll("[data-go]").forEach((button) => {
+       button.addEventListener("click", () => {
+        showPage(button.dataset.go);
+     });
+    });
+
+      // OPENING AMPOP
+      const envelope = document.getElementById("envelope");
+      const openingContinue = document.getElementById("openingContinue");
+      const openHint = document.getElementById("openHint");
+
+      envelope.addEventListener("click", () => {
+        const isOpen = envelope.classList.toggle("open");
+
+        openingContinue.hidden = !isOpen;
+        openHint.textContent = isOpen ? "your letter is open ♡" : "tap to open";
+      });
+
+      openingContinue.addEventListener("click", () => {
+        showPage("birthday");
+      });
+
+      // GIFT / TIKET BIOSKOP
+      const giftBox = document.getElementById("giftBox");
+      const movieTicket = document.getElementById("movieTicket");
+      const giftHint = document.getElementById("giftHint");
+
+      function openGift() {
+        giftBox.classList.add("open");
+        giftHint.textContent = "for our next memory ♡";
+
+        setTimeout(() => {
+          movieTicket.classList.add("show");
+        }, 450);
+      }
+
+      giftBox.addEventListener("click", openGift);
+
+      giftBox.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openGift();
+        }
+      });
+    </script>
+  </body>
+</html>
