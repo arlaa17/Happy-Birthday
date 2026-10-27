@@ -1,11 +1,15 @@
-<html lang="id"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Birthday ♡</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Great+Vibes&amp;display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       * {
@@ -523,29 +527,32 @@
       .mini-gallery {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, auto);
         gap: 15px;
         width: 100%;
         min-width: 0;
+        align-items: start;
       }
 
       .mini-gallery .frame {
         width: 100%;
+        max-width: none;
         min-width: 0;
         margin: 0;
+        justify-self: stretch;
+        align-self: start;
         box-sizing: border-box;
       }
 
-      
-     .mini-gallery .frame video {
-       display: block;
+      .mini-gallery .frame video {
+        display: block;
         width: 100%;
-       height: auto;
-       aspect-ratio: 4 / 5;
-       object-fit: cover;
-       background: #111;
-       border-radius: 2px;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        background: #111;
+        border-radius: 2px;
       }
-
 
       .mini-gallery .frame:nth-child(3) {
         grid-column: 1 / -1;
@@ -673,7 +680,6 @@
         }
       }
 
-
       /* FALLING PETALS */
       .petal-fall {
         position: absolute;
@@ -720,7 +726,7 @@
           grid-template-columns: 1fr 1fr;
         }
 
-        .choices { 
+        .choices {
           grid-template-columns: 1fr 1fr;
           gap: 12px;
         }
@@ -764,6 +770,7 @@
 
         .mini-gallery {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-rows: auto auto;
           gap: 12px;
           width: 100%;
           min-width: 0;
@@ -773,7 +780,6 @@
           width: 100%;
           max-width: 100%;
           min-width: 0;
-          flex: initial;
           margin: 0;
         }
 
@@ -803,17 +809,17 @@
         }
 
         .note h2 {
-         font-size: clamp(36px, 10vw, 48px);
+          font-size: clamp(36px, 10vw, 48px);
         }
 
         .note p {
-         font-size: 17px;
-         line-height: 1.5;
+          font-size: 17px;
+          line-height: 1.5;
         }
 
         .player {
-         width: 100%;
-         max-width: 260px;
+          width: 100%;
+          max-width: 260px;
         }
 
         .frame {
@@ -855,19 +861,49 @@
   <body>
     <div class="app">
       <div class="petal-fall" aria-hidden="true">
-        <span class="falling-petal" style="left:8%;animation-duration:13s;animation-delay:-4s"></span>
-        <span class="falling-petal" style="left:25%;animation-duration:17s;animation-delay:-11s"></span>
-        <span class="falling-petal" style="left:56%;animation-duration:15s;animation-delay:-2s"></span>
-        <span class="falling-petal" style="left:84%;animation-duration:18s;animation-delay:-8s"></span>
-        <span class="falling-petal" style="left:95%;animation-duration:12s;animation-delay:-6s"></span>
+        <span
+          class="falling-petal"
+          style="left: 8%; animation-duration: 13s; animation-delay: -4s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 25%; animation-duration: 17s; animation-delay: -11s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 56%; animation-duration: 15s; animation-delay: -2s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 84%; animation-duration: 18s; animation-delay: -8s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 95%; animation-duration: 12s; animation-delay: -6s"
+        ></span>
       </div>
 
       <div class="petal-fall" aria-hidden="true">
-        <span class="falling-petal" style="left: 8%; animation-duration: 13s; animation-delay: -4s"></span>
-        <span class="falling-petal" style="left: 25%; animation-duration: 17s; animation-delay: -11s"></span>
-        <span class="falling-petal" style="left: 56%; animation-duration: 15s; animation-delay: -2s"></span>
-        <span class="falling-petal" style="left: 84%; animation-duration: 18s; animation-delay: -8s"></span>
-        <span class="falling-petal" style="left: 95%; animation-duration: 12s; animation-delay: -6s"></span>
+        <span
+          class="falling-petal"
+          style="left: 8%; animation-duration: 13s; animation-delay: -4s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 25%; animation-duration: 17s; animation-delay: -11s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 56%; animation-duration: 15s; animation-delay: -2s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 84%; animation-duration: 18s; animation-delay: -8s"
+        ></span>
+        <span
+          class="falling-petal"
+          style="left: 95%; animation-duration: 12s; animation-delay: -6s"
+        ></span>
       </div>
 
       <!-- 1. OPENING -->
@@ -882,13 +918,18 @@
 
               <div class="letter">
                 <h3 class="script">For You ♡</h3>
-                <p>sending warm wishes on your special day sayangkuuuu♡ enjoy your day sayangggg nanti kita ketemu yaaaa hehehe love you sayangggg</p>
+                <p>
+                  sending warm wishes on your special day sayangkuuuu♡ enjoy
+                  your day sayangggg nanti kita ketemu yaaaa hehehe love you
+                  sayangggg
+                </p>
               </div>
 
               <div class="flap"></div>
 
               <div class="flower" aria-hidden="true">
-                <span></span><span></span><span></span> <span></span><span></span><span></span>
+                <span></span><span></span><span></span> <span></span
+                ><span></span><span></span>
               </div>
             </button>
           </div>
@@ -909,10 +950,10 @@
           <div class="birthday-grid">
             <div class="photos">
               <div class="photo">
-                <img src="img/left 1.jpeg">
+                <img src="img/left 1.jpeg" />
               </div>
               <div class="photo">
-                <img src="img/left 2.jpeg">
+                <img src="img/left 2.jpeg" />
               </div>
             </div>
 
@@ -928,13 +969,13 @@
 
             <div class="photos">
               <div class="photo">
-                <img src="img/right 1.jpeg">
+                <img src="img/right 1.jpeg" />
               </div>
               <div class="photo">
-                <img src="img/right 2.jpeg">
+                <img src="img/right 2.jpeg" />
               </div>
               <div class="photo">
-                <img src="img/right 3.jpeg">
+                <img src="img/right 3.jpeg" />
               </div>
             </div>
           </div>
@@ -946,7 +987,6 @@
 
       <!-- 3. CHOOSE THE SURPRISE -->
       <section class="page" id="menu">
-
         <div class="content">
           <h2 class="script">Choose the Surprise</h2>
 
@@ -973,9 +1013,7 @@
           </div>
         </div>
 
-        <button class="back" data-go="back">
-         BACK
-       </button>
+        <button class="back" data-go="back">BACK</button>
       </section>
 
       <!-- 4. JOURNEY -->
@@ -987,28 +1025,28 @@
 
           <div class="gallery">
             <div class="polaroid">
-              <img src="img/ken 1.jpeg" alt="Kenangan 1">
+              <img src="img/ken 1.jpeg" alt="Kenangan 1" />
             </div>
             <div class="polaroid">
-              <img src="img/ken 2.jpg" alt="Kenangan 2">
+              <img src="img/ken 2.jpg" alt="Kenangan 2" />
             </div>
             <div class="polaroid">
-              <img src="img/ken 3.jpg" alt="Kenangan 3">
+              <img src="img/ken 3.jpg" alt="Kenangan 3" />
             </div>
             <div class="polaroid">
-              <img src="img/ken 4.jpeg" alt="Kenangan 4">
+              <img src="img/ken 4.jpeg" alt="Kenangan 4" />
             </div>
             <div class="polaroid">
-              <img src="img/ken 5.jpg" alt="Kenangan 5">
+              <img src="img/ken 5.jpg" alt="Kenangan 5" />
             </div>
             <div class="polaroid">
-              <img src="img/ken 6.jpg" alt="Kenangan 6">
+              <img src="img/ken 6.jpg" alt="Kenangan 6" />
             </div>
             <div class="polaroid">
-              <img src="img/ken 7.jpg" alt="Kenangan 7">
+              <img src="img/ken 7.jpg" alt="Kenangan 7" />
             </div>
             <div class="polaroid">
-              <img src="img/ken 8.jpg" alt="Kenangan 8">
+              <img src="img/ken 8.jpg" alt="Kenangan 8" />
             </div>
           </div>
 
@@ -1029,26 +1067,34 @@
                 Selamat ulang tahun, sayang. Di hari spesialmu ini, aku cuma mau
                 bilang terima kasih karena sudah hadir dan membawa begitu banyak
                 kebahagiaan ke hidupku. Aku berharap kamu bisa ngewujudin semua
-                wishlist kamuuu dalam waktu dekat ya sayangggg, wish u all the best.
+                wishlist kamuuu dalam waktu dekat ya sayangggg, wish u all the
+                best.
               </p>
-          
 
-             <div class="player">           
-                <iframe data-testid="embed-iframe" 
-                 style="border-radius:12px" 
-                 src="https://open.spotify.com/embed/track/13CwOTXUgBugeBByE9oIWb?utm_source=generator&si=2e4cfafc2fb2482f"
-                 width="100%" 
-                 height="152" 
-                 frameBorder="0" 
-                 allowfullscreen="" 
-                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                 loading="lazy">
+              <div class="player">
+                <iframe
+                  data-testid="embed-iframe"
+                  style="border-radius: 12px"
+                  src="https://open.spotify.com/embed/track/13CwOTXUgBugeBByE9oIWb?utm_source=generator&si=2e4cfafc2fb2482f"
+                  width="100%"
+                  height="152"
+                  frameborder="0"
+                  allowfullscreen=""
+                  allow="
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                  "
+                  loading="lazy"
+                >
                 </iframe>
-             </div>
+              </div>
             </div>
 
             <div class="frame">
-               <img src="img/playlist.jpeg">
+              <img src="img/playlist.jpeg" />
             </div>
           </div>
         </div>
@@ -1063,36 +1109,46 @@
 
           <div class="moment-layout">
             <div class="video">
-              <iframe width="560" 
-               height="315" 
-               src="https://www.youtube.com/embed/KXZIn6H-Lyw?si=HwFpZGoqAgCK6QWR"
-               title="YouTube video player" 
-               frameborder="0" 
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-               referrerpolicy="strict-origin-when-cross-origin" 
-               allowfullscreen>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/KXZIn6H-Lyw?si=HwFpZGoqAgCK6QWR"
+                title="YouTube video player"
+                frameborder="0"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              >
               </iframe>
             </div>
 
             <div class="mini-gallery">
               <div class="frame">
                 <video autoplay muted loop playsinline preload="metadata">
-                  <source src="vid/vid (1).mp4" type="video/mp4 ">
+                  <source src="vid/vid (1).mp4" type="video/mp4 " />
                 </video>
               </div>
               <div class="frame">
                 <video autoplay muted loop playsinline preload="metadata">
-                  <source src="vid/vid (2).mp4" type="video/mp4 ">
+                  <source src="vid/vid (2).mp4" type="video/mp4 " />
                 </video>
               </div>
               <div class="frame">
                 <video autoplay muted loop playsinline preload="metadata">
-                  <source src="vid/vid (3).mp4" type="video/mp4 ">
+                  <source src="vid/vid (3).mp4" type="video/mp4 " />
                 </video>
               </div>
               <div class="frame">
                 <video autoplay muted loop playsinline preload="metadata">
-                  <source src="vid/vid (4).mp4" type="video/mp4 ">
+                  <source src="vid/vid (4).mp4" type="video/mp4 " />
                 </video>
               </div>
             </div>
@@ -1110,7 +1166,13 @@
           <p class="eyebrow">One More Surprise</p>
           <h2 class="script">A Little Gift For Us</h2>
 
-          <div class="gift" id="giftBox" role="button" tabindex="0" aria-label="Buka hadiah">
+          <div
+            class="gift"
+            id="giftBox"
+            role="button"
+            tabindex="0"
+            aria-label="Buka hadiah"
+          >
             <div class="box-bow">🎀</div>
             <div class="box-lid"></div>
             <div class="box-body"></div>
@@ -1160,32 +1222,32 @@
     </div>
 
     <script>
-       const pages = document.querySelectorAll(".page");
-       let currentPage = document.querySelector(".page.active")?.id || "opening";
-       let previousPage = null;
- 
-       function showPage(id) {
+      const pages = document.querySelectorAll(".page");
+      let currentPage = document.querySelector(".page.active")?.id || "opening";
+      let previousPage = null;
+
+      function showPage(id) {
         if (id === "back") {
           if (previousPage) {
-           const pageToShow = previousPage;
-           previousPage = currentPage;
-           currentPage = pageToShow;
-         }
-       } else {
-         previousPage = currentPage;
-         currentPage = id;
-       }
+            const pageToShow = previousPage;
+            previousPage = currentPage;
+            currentPage = pageToShow;
+          }
+        } else {
+          previousPage = currentPage;
+          currentPage = id;
+        }
 
-       pages.forEach((page) => {
-        page.classList.toggle("active", page.id === currentPage);
-       });
-     }
- 
-     document.querySelectorAll("[data-go]").forEach((button) => {
-       button.addEventListener("click", () => {
-        showPage(button.dataset.go);
-     });
-    });
+        pages.forEach((page) => {
+          page.classList.toggle("active", page.id === currentPage);
+        });
+      }
+
+      document.querySelectorAll("[data-go]").forEach((button) => {
+        button.addEventListener("click", () => {
+          showPage(button.dataset.go);
+        });
+      });
 
       // OPENING AMPOP
       const envelope = document.getElementById("envelope");
